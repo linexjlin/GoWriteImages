@@ -32,7 +32,6 @@ func main() {
 	}()
 
 	rgbframe := make([]uint8, 100*80*3)
-	//frameCount := 24 * 60
 
 	i := 0
 	for {
@@ -41,46 +40,8 @@ func main() {
 		i++
 		rgba2rgba(img.Pix, rgbframe)
 		ffplayIn.Write(rgbframe)
-		time.Sleep(time.Millisecond * (1000 / 20))
+		time.Sleep(time.Millisecond * (1000 / 24))
 	}
-	/*
-		k := 0
-		for i := 0; i < 100; i++ {
-			fmt.Printf("\n")
-			for j := 0; j < 80; j++ {
-				rgba := img.RGBAAt(j, i)
-				rgb[k] = rgba.B
-				k++
-				rgb[k] = rgba.G
-				k++
-				rgb[k] = rgba.R
-				k++
-				if rgba.B == 0 {
-					fmt.Printf("_")
-				} else {
-					fmt.Printf("*")
-				}
-			}
-		}
-		fmt.Println(img.RGBAAt(23, 25))*/
-
-	/*
-		for i := 0; i < len(img.Pix); i++ {
-			if (i+1)%3 == 0 {
-				continue
-			} else {
-				rgb[j] = uint8(j % 255)
-				//rgb[j] = img.Pix[i]
-				j++
-			}
-		}*/
-
-	//f.Write(rgb)
-	//png.Encode(imgf, img)
-	/*
-		for i := 0; i < 24*60; i++ {
-			f.Write(rgb)
-	}*/
 }
 
 func rgba2rgba(rgba []uint8, rgb []uint8) {
